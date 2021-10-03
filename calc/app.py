@@ -31,3 +31,14 @@ def div_params():
     b = int(request.args.get('b'))
 
     return f"a times b equals {div(a,b)}"
+
+
+@app.route('/math/<function>')
+def math_params(function):
+    a = int(request.args.get('a'))
+    b = int(request.args.get('b'))
+    functions={'add':add,'sub':sub,'mult':mult,"div":div}
+
+    return f" a plus b equals {functions.get(f'{function}')(a,b)}"
+
+
